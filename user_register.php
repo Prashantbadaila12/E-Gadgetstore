@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
       }else{
          $insert_user = $conn->prepare("INSERT INTO `users`(name, email, password) VALUES(?,?,?)");
          $insert_user->execute([$name, $email, $cpass]);
-         $message[] = 'registered successfully, login now please!';
+         $message[] = 'User registered successfully!';
       }
    }
 

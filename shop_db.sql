@@ -282,3 +282,8 @@ INSERT INTO products (name, brand, price) VALUES
 ('Galaxy A55', 'Samsung', 55999),
 ('iPhone 15 Pro Max', 'Apple', 219999),
 ('iPhone 14', 'Apple', 124999);
+
+
+ALTER TABLE products ADD COLUMN quantity INT(10) NOT NULL DEFAULT 0 AFTER price;
+
+ALTER TABLE `products` ADD COLUMN `is_new` TINYINT(1) NOT NULL DEFAULT 0 AFTER `price`;

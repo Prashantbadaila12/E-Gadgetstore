@@ -166,7 +166,7 @@ include 'components/wishlist_cart.php';
          <div class="content">
             <span>upto 50% off</span>
             <h3>Latest headsets</h3>
-            <a href="shop.php" class="btn">Shop Now.</a>
+            <a href="category.php?category=headset" class="btn">Shop Now.</a>
          </div>
       </div>
 
@@ -222,12 +222,19 @@ include 'components/wishlist_cart.php';
       <img src="images/icon-7.png" alt="">
       <h3>Smartphone</h3>
    </a>
+   <a href="category.php?category=Iphone" class="swiper-slide slide">
+      <img src="images/icon-7.png" alt="">
+      <h3>Iphone</h3>
+   </a>
 
    <a href="category.php?category=watch" class="swiper-slide slide">
       <img src="images/icon-8.png" alt="">
       <h3>Watch</h3>
    </a>
-
+   <a href="category.php?category=Headset" class="swiper-slide slide">
+      <img src="images/icon-9.jpg" alt="">
+      <h3>Headset</h3>
+   </a>
    </div>
 
    <div class="swiper-pagination"></div>
@@ -294,7 +301,7 @@ include 'components/wishlist_cart.php';
                <i class="fas fa-star"></i>
             </div>
             <p>"Amazing products and excellent service! Will definitely shop again."</p>
-            <h3>John Doe</h3>
+            <h3>Ram kumar</h3>
          </div>
          <div class="swiper-slide testimonial-card" data-aos="fade-up" data-aos-delay="200">
             <div class="stars">
@@ -305,7 +312,7 @@ include 'components/wishlist_cart.php';
                <i class="fas fa-star-half-alt"></i>
             </div>
             <p>"Fast delivery and great quality products. Very satisfied!"</p>
-            <h3>Jane Smith</h3>
+            <h3>Hari Singh</h3>
          </div>
       </div>
       <div class="swiper-pagination"></div>

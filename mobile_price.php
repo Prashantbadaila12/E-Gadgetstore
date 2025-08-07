@@ -114,6 +114,17 @@ if(isset($_SESSION['user_id'])){
          color: #666;
          line-height: 1.6;
       }
+
+      .brand-section {
+         display: none;
+      }
+      .brand-section.active {
+         display: block;
+      }
+      .brand-btn.active {
+         background: #357abd;
+         color: white;
+      }
    </style>
 
 </head>
@@ -129,12 +140,11 @@ if(isset($_SESSION['user_id'])){
    </div>
 
    <div class="brand-nav">
-      <a href="#samsung">Samsung</a>
-      <a href="#apple">Apple</a>
-      <!-- Add more brands here -->
+      <a href="#" id="samsung-btn" class="brand-btn active">Samsung</a>
+      <a href="#" id="apple-btn" class="brand-btn">Apple</a>
    </div>
 
-   <div id="samsung" class="brand-section">
+   <div id="samsung" class="brand-section active">
       <h2 class="brand-title">Samsung</h2>
       <table class="price-table">
          <thead>
@@ -211,6 +221,31 @@ if(isset($_SESSION['user_id'])){
 <?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const brandBtns = document.querySelectorAll('.brand-btn');
+    const brandSections = document.querySelectorAll('.brand-section');
+
+    brandBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            brandBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const targetId = this.id.replace('-btn', '');
+            
+            brandSections.forEach(section => {
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+    });
+});
+</script>
 
 </body>
 </html> 

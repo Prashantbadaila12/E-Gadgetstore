@@ -18,7 +18,7 @@ if(isset($_SESSION['user_id'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>About</title>
+   <title>About Us - ProjectDone</title>
 
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
    
@@ -28,29 +28,101 @@ if(isset($_SESSION['user_id'])){
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
+   <style>
+      .about-section {
+         max-width: 900px;
+         margin: 40px auto;
+         background: #fff;
+         border-radius: 10px;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+         padding: 40px 30px;
+      }
+      .about-section h1 {
+         color: #333;
+         margin-bottom: 20px;
+         font-size: 2.5rem;
+         text-align: center;
+      }
+      .about-section h2 {
+         color: #007bff;
+         margin-top: 30px;
+         font-size: 1.5rem;
+      }
+      .about-section p {
+         color: #444;
+         font-size: 1.1rem;
+         line-height: 1.7;
+         margin-bottom: 18px;
+      }
+      .about-section ul {
+         margin-left: 20px;
+         color: #444;
+         font-size: 1.1rem;
+      }
+      .about-section .cta {
+         display: block;
+         margin: 30px auto 0 auto;
+         padding: 12px 32px;
+         background: #007bff;
+         color: #fff;
+         border: none;
+         border-radius: 5px;
+         font-size: 1.1rem;
+         cursor: pointer;
+         text-align: center;
+         text-decoration: none;
+         transition: background 0.2s;
+         width: fit-content;
+      }
+      .about-section .cta:hover {
+         background: #0056b3;
+      }
+   </style>
+
 </head>
 <body>
    
 <?php include 'components/user_header.php'; ?>
 
-<section class="about">
-
-   <div class="row">
-
-      <div class="image">
-         <img src="images/23.png" alt="">
-      </div>
-
-      <div class="content">
-         <h3>Developer's Message:</h3>
-         <p>Hey There ! I'm Prashant Badaila. I love designing websites and exploring new things. Learning new things is my hobby.</p>
-
-      
-         <a href="contact.php" class="btn">Contact Us</a>
-      </div>
-
+<section class="about-section">
+   <h1 style="color:#007bff; font-weight:bold; font-size:2.7rem; margin-bottom:10px;">
+      Discover the Joy of Shopping!
+   </h1>
+   <p style="font-size:1.2rem; color:#222;">
+      <img src="images/gadget-store.jpg" alt="Gadget Store" style="float:right; width:180px; margin:0 0 20px 30px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      Welcome to <span style="color:#007bff; font-weight:bold;">Electronic Gadget Store</span>!<br>
+      <span style="color:#28a745; font-weight:bold;">Your one-stop shop for the latest electronics and everyday essentials.</span>
+      <br><br>
+      At Electronic Gadget Store, our mission is to make online shopping <span style="color:#007bff;">simple</span>, <span style="color:#007bff;">fast</span>, and <span style="color:#007bff;">enjoyable</span>. Explore a wide range of products, from cutting-edge gadgets to must-have accessories, all in one place.
+   </p>
+   <h2 style="margin-top:35px;">Why You'll Love Shopping With Us</h2>
+   <ul style="list-style:none; padding:0;">
+      <li style="margin-bottom:12px;">
+         <i class="fas fa-search" style="color:#007bff; margin-right:8px;"></i>
+         <strong>Smart Search:</strong> Find products instantly—even if you only remember the first letter!
+      </li>
+      <li style="margin-bottom:12px;">
+         <i class="fas fa-shield-alt" style="color:#28a745; margin-right:8px;"></i>
+         <strong>Secure Shopping:</strong> Your privacy and security are our top priorities.
+      </li>
+      <li style="margin-bottom:12px;">
+         <i class="fas fa-smile" style="color:#ffc107; margin-right:8px;"></i>
+         <strong>Customer Focused:</strong> We listen to your feedback and strive to make your experience the best.
+      </li>
+      <li style="margin-bottom:12px;">
+         <i class="fas fa-sync-alt" style="color:#17a2b8; margin-right:8px;"></i>
+         <strong>Always Improving:</strong> We're always updating our platform to serve you better.
+      </li>
+   </ul>
+   <div style="background:#f8f9fa; border-radius:8px; padding:18px 20px; margin:30px 0 20px 0; border-left:5px solid #007bff;">
+      <strong style="color:#007bff;">Our Promise:</strong> <span style="color:#444;">We guarantee 100% satisfaction with every purchase. If you're not happy, we'll make it right!</span>
    </div>
-
+   <h2>Our Vision</h2>
+   <p style="font-size:1.1rem;">
+      To become your favorite online destination for electronics by offering a seamless, reliable, and enjoyable shopping experience.
+   </p>
+   <a href="shop.php" class="cta" style="margin-top:20px;">Start Shopping</a>
+   <a href="contact.php" class="cta" style="background:#28a745; margin-top:10px;">Contact Us</a>
 </section>
 
 <section class="reviews">
@@ -146,14 +218,6 @@ if(isset($_SESSION['user_id'])){
    </div>
 
 </section>
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 
