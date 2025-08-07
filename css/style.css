@@ -935,9 +935,9 @@ section{
    color:var(--main-color);
 }
 
-.footer {
-   background: var(--main-color);
-   color: #fff;
+footer{
+   background-color: var(--white);
+   /* padding-bottom: 7rem; */
 }
 
 .footer .grid{
@@ -947,19 +947,9 @@ section{
    align-items: flex-start;
 }
 
-.footer .grid .box h3,
-.footer .grid .box a,
-.footer .grid .box,
-.footer .credit {
-   color: #fff;
-}
-
-.footer .grid .box a:hover {
-   color: #232526;
-}
-
 .footer .grid .box h3{
    font-size: 2rem;
+   color:var(--black);
    margin-bottom: 2rem;
    text-transform: capitalize;
 }
@@ -977,6 +967,10 @@ section{
    transition: .2s linear;
 }
 
+.footer .grid .box a:hover{
+   color:var(--main-color);
+}
+
 .footer .grid .box a:hover i{
    padding-right: 2rem;
 }
@@ -992,6 +986,8 @@ section{
 .footer .credit span{
    color:var(--main-color);
 }
+
+
 
 .sidebar {
    width: 220px;
