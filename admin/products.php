@@ -18,6 +18,10 @@ if(isset($_POST['add_product'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
+   
+   // Get quantity from the form
+   $quantity = $_POST['quantity'];
+   $quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT);
 
    $image_01 = $_FILES['image_01']['name'];
    $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
@@ -44,8 +48,10 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, image_02, image_03) VALUES(?,?,?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $image_01, $image_02, $image_03]);
+      // Modified INSERT query to include quantity
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, quantity, image_01, image_02, image_03) VALUES(?,?,?,?,?,?,?)");
+      // Modified execute parameters to include quantity
+      $insert_products->execute([$name, $details, $price, $quantity, $image_01, $image_02, $image_03]);
 
       if($insert_products){
          if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000){
@@ -115,6 +121,11 @@ if(isset($_GET['delete'])){
             <span>Product Price (required)</span>
             <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
+         <!-- Added input field for Product Quantity -->
+         <div class="inputBox">
+            <span>Product Quantity (required)</span>
+            <input type="number" min="0" class="box" required placeholder="enter product quantity" name="quantity">
+         </div>
         <div class="inputBox">
             <span>Image 01 (required)</span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
@@ -154,6 +165,7 @@ if(isset($_GET['delete'])){
       <img src="../uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_products['name']; ?></div>
       <div class="price">Nrs.<span><?= $fetch_products['price']; ?></span>/-</div>
+      <div class="details"><span>Quantity: <?= $fetch_products['quantity']; ?></span></div>
       <div class="details"><span><?= $fetch_products['details']; ?></span></div>
       <div class="flex-btn">
          <a href="update_product.php?update=<?= $fetch_products['id']; ?>" class="option-btn">update</a>

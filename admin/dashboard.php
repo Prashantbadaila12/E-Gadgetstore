@@ -128,6 +128,51 @@ if(!isset($admin_id)){
          <a href="messages.php" class="btn">See messages</a>
       </div>
 
+      <!-- New Box for Recent Users -->
+      <div class="box">
+         <h3>Recent Users</h3>
+         <?php
+            $select_recent_users = $conn->prepare("SELECT name, email FROM `users` ORDER BY id DESC LIMIT 5"); // Fetching last 5 registered users
+            $select_recent_users->execute();
+            if($select_recent_users->rowCount() > 0){
+               while($fetch_recent_user = $select_recent_users->fetch(PDO::FETCH_ASSOC)){
+         ?>
+         <p><strong><?= $fetch_recent_user['name']; ?></strong> - <?= $fetch_recent_user['email']; ?></p>
+         <?php
+               }
+            }else{
+               echo '<p class="empty">No recent users.</p>';
+            }
+         ?>
+         <a href="users_accounts.php" class="btn">Manage Users</a>
+      </div>
+
+      <!-- New Box for Total Product Quantity -->
+      <div class="box">
+         <?php
+            $select_total_quantity = $conn->prepare("SELECT SUM(quantity) AS total_qty FROM `products`");
+            $select_total_quantity->execute();
+            $fetch_total_quantity = $select_total_quantity->fetch(PDO::FETCH_ASSOC);
+            $total_products_quantity = $fetch_total_quantity['total_qty'] ?? 0; // Use 0 if SUM is null (no products)
+         ?>
+         <h3><?= $total_products_quantity; ?></h3>
+         <p>Total stock quantity</p>
+         <a href="products.php" class="btn">Manage Products</a>
+      </div>
+
+      <!-- New Box for Low Stock Products -->
+      <div class="box">
+         <?php
+            $select_low_stock = $conn->prepare("SELECT COUNT(*) AS low_stock_count FROM `products` WHERE quantity < 10"); // Threshold set to 10
+            $select_low_stock->execute();
+            $fetch_low_stock = $select_low_stock->fetch(PDO::FETCH_ASSOC);
+            $low_stock_count = $fetch_low_stock['low_stock_count'] ?? 0; // Use 0 if count is null
+         ?>
+         <h3><?= $low_stock_count; ?></h3>
+         <p>Low stock products ( &lt; 10)</p>
+         <a href="products.php" class="option-btn">See Products</a>
+      </div>
+
    </div>
 
 </section>

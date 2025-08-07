@@ -19,9 +19,11 @@ if(isset($_POST['update'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
+   $quantity = $_POST['quantity'];
+   $quantity = filter_var($quantity, FILTER_SANITIZE_NUMBER_INT);
 
-   $update_product = $conn->prepare("UPDATE `products` SET name = ?, price = ?, details = ? WHERE id = ?");
-   $update_product->execute([$name, $price, $details, $pid]);
+   $update_product = $conn->prepare("UPDATE `products` SET name = ?, price = ?, details = ?, quantity = ? WHERE id = ?");
+   $update_product->execute([$name, $price, $details, $quantity, $pid]);
 
    $message[] = 'product updated successfully!';
 
@@ -135,6 +137,8 @@ if(isset($_POST['update'])){
       <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
       <span>Update Details</span>
       <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
+      <span>Update Quantity</span>
+      <input type="number" name="quantity" required class="box" min="0" placeholder="enter product quantity" value="<?= $fetch_products['quantity']; ?>">
       <span>Update image 01</span>
       <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box">
       <span>Update image 02</span>

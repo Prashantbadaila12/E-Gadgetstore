@@ -52,10 +52,11 @@ if(isset($_GET['delete'])){
 <div class="box-container">
 
    <?php
-      $select_orders = $conn->prepare("SELECT * FROM `orders`");
-      $select_orders->execute();
-      if($select_orders->rowCount() > 0){
-         while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
+      try {
+         $select_orders = $conn->prepare("SELECT * FROM `orders`");
+         $select_orders->execute();
+         if($select_orders->rowCount() > 0){
+            while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
    ?>
    <div class="box">
       <p> Placed On : <span><?= $fetch_orders['placed_on']; ?></span> </p>
@@ -79,9 +80,12 @@ if(isset($_GET['delete'])){
       </form>
    </div>
    <?php
+            }
+         }else{
+            echo '<p class="empty">no orders placed yet!</p>';
          }
-      }else{
-         echo '<p class="empty">no orders placed yet!</p>';
+      } catch (PDOException $e) {
+         echo '<p class="error">Error fetching orders: ' . $e->getMessage() . '</p>';
       }
    ?>
 
